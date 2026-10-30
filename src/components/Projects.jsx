@@ -4,29 +4,46 @@ const PROJECTS = [
   {
     title: 'FactuFlow',
     type: 'SAAS DE FACTURATION',
-    desc: "Application web complète permettant aux freelances et TPE de gérer leurs clients, créer des factures avec calculs automatiques (HT/TVA/TTC) et générer des PDF professionnels.",
-    tags: ['React 19', 'Supabase', 'PostgreSQL', 'Vercel', 'PWA'],
-    // Mets ici une capture d'écran de ton dashboard FactuFlow
+    desc: "Application web complète permettant aux freelances et TPE de gérer leurs clients, créer des factures avec calculs automatiques (HT/TVA/TTC) et générer des PDF professionnels. Système d'authentification sécurisé et PWA installable.",
+    tags: ['React 19', 'Supabase', 'PostgreSQL', 'PDF', 'PWA'],
     img: '/factuflow-preview.png', 
     link: 'https://factuflow-a.vercel.app/',
     status: 'En ligne'
   },
   {
-    title: 'E-Touré',
-    type: 'SAAS DE GESTION DE BOUTIQUE',
-    desc: "Plateforme pour les commerçants de Touba leur permettant de digitaliser leur stock, gérer les dettes clients et encaisser rapidement.",
-    tags: ['JavaScript', 'Supabase', 'PostgreSQL', 'Edge Functions'],
-    img: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?q=80&w=1000&auto=format&fit=crop',
-    link: '#', // À remplacer par le vrai lien
+    title: 'Assistant IA E-Touré',
+    type: 'INTELLIGENCE ARTIFICIELLE',
+    desc: "Chatbot intelligent conçu pour l'entreprise E-Touré Service. Capable de répondre aux questions des clients, d'estimer des prix et de qualifier les demandes de devis 24h/24.",
+    tags: ['JavaScript', 'API IA', 'NLP', 'Netlify'],
+    img: '/chatbot-preview.png',
+    link: 'https://chatbot-e-toure-service.netlify.app/',
     status: 'En ligne'
   },
   {
-    title: 'Bafing Market',
-    type: 'MARKETPLACE DE SECONDE MAIN',
-    desc: "Marketplace de proximité permettant aux vendeurs d'occasion de publier des annonces et aux acheteurs de trouver des articles près de chez eux.",
-    tags: ['HTML5', 'CSS3', 'JavaScript', 'Supabase'],
-    img: 'https://images.unsplash.com/photo-1441986300917-64674bd600d8?q=80&w=1000&auto=format&fit=crop',
-    link: '#',
+    title: 'Saga Chat',
+    type: 'MESSAGERIE EN TEMPS RÉEL',
+    desc: "Application de messagerie instantanée avec indicateur de frappe, statuts de lecture (✓✓), sons de notification et suppression de messages. Interface PWA installable et responsive.",
+    tags: ['JavaScript', 'Supabase Realtime', 'WebSockets', 'PWA'],
+    img: '/saga-chat-preview.png',
+    link: 'https://saga-chatt.netlify.app/',
+    status: 'En ligne'
+  },
+  {
+    title: 'E-Touré Service',
+    type: 'SITE VITRINE & SEO',
+    desc: "Site vitrine pour une entreprise de transport et dépannage (France & Belgique). Design moderne, présentation des services, tarifs et formulaire de contact intelligent redirigeant vers WhatsApp.",
+    tags: ['HTML5', 'CSS3', 'SEO', 'Responsive'],
+    img: '/e-toure-preview.png',
+    link: 'https://e-toure-service.netlify.app/',
+    status: 'En ligne'
+  },
+  {
+    title: 'Toure Track',
+    type: 'LOGISTIQUE & GESTION',
+    desc: "Plateforme de gestion de livraisons permettant de suivre les expéditions, gérer les chauffeurs et visualiser les performances en temps réel via un tableau de bord dédié.",
+    tags: ['React', 'Supabase', 'Logistique', 'Dashboard'],
+    img: '/toure-track-preview.png',
+    link: 'https://toure-track.vercel.app/',
     status: 'En ligne'
   }
 ];
@@ -42,8 +59,8 @@ export default function Projects() {
 
       <div className="projects-grid">
         {PROJECTS.map((project, index) => (
-          <motion.div 
-            key={index}
+          <motion.article
+            key={project.title}
             className="project-card"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -51,13 +68,16 @@ export default function Projects() {
             transition={{ duration: 0.5, delay: index * 0.1 }}
           >
             <div className="project-image">
-              <img src={project.img} alt={project.title} />
+              <div className="project-image-frame">
+                <img src={project.img} alt={`Aperçu de ${project.title}`} loading="lazy" decoding="async" />
+              </div>
               <span className="project-status">{project.status}</span>
             </div>
             
             <div className="project-content">
               <p className="project-type">{project.type}</p>
               <h3 className="project-title">{project.title}</h3>
+              <div className="project-divider" aria-hidden="true" />
               <p className="project-desc">{project.desc}</p>
               
               <div className="project-tags">
@@ -67,10 +87,10 @@ export default function Projects() {
               </div>
               
               <a href={project.link} target="_blank" rel="noopener noreferrer" className="project-link">
-                {project.link !== '#' ? "Voir l'application en direct →" : "En savoir plus →"}
+                Voir l'application en direct →
               </a>
             </div>
-          </motion.div>
+          </motion.article>
         ))}
       </div>
     </section>

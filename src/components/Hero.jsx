@@ -35,7 +35,13 @@ export default function Hero() {
         transition={{ duration: 0.6, delay: 0.2 }}
       >
         <div className="hero-image-glow"></div>
-        <img src="/profil.png" alt="Cheikh Oumar Touré" className="hero-image" />
+        <div className="hero-image-frame">
+          <img src="/profil.png" alt="Cheikh Oumar Touré" className="hero-image" />
+        </div>
+        <div className="hero-image-caption">
+          <span className="dot" aria-hidden="true"></span>
+          Cheikh Oumar Touré — Dev Full-Stack
+        </div>
       </motion.div>
     </section>
   );

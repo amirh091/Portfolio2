@@ -93,6 +93,19 @@ export default function Projects() {
           </motion.article>
         ))}
       </div>
+
+      <div className="projects-more">
+        <a
+          href="https://github.com/amirh091"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="projects-more-link"
+        >
+          <i className="ph ph-github-logo" aria-hidden="true"></i>
+          Voir tous mes projets sur GitHub
+          <span className="arrow" aria-hidden="true">→</span>
+        </a>
+      </div>
     </section>
   );
 }
